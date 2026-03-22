@@ -1,132 +1,431 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cerostaff — Agentes virtuales IA para tu negocio</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-      color: #fff;
-      text-align: center;
-      padding: 64px 24px 56px;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    header p.tagline {
-      font-size: 1.25rem;
-      opacity: 0.95;
-      font-weight: 400;
-    }
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 48px 24px;
-      flex: 1;
-      text-align: center;
-    }
-    .badge {
-      display: inline-block;
-      background: #e0e7ff;
-      color: #4F46E5;
-      font-size: 0.85rem;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 999px;
-      margin-bottom: 32px;
-      letter-spacing: 0.04em;
-    }
-    .description {
-      font-size: 1.05rem;
-      color: #475569;
-      max-width: 560px;
-      margin: 0 auto 40px;
-    }
-    .contact-block {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 28px 32px;
-      max-width: 480px;
-      margin: 0 auto 40px;
-    }
-    .contact-block p {
-      font-size: 0.95rem;
-      color: #64748b;
-      margin-bottom: 8px;
-    }
-    .contact-block a {
-      color: #4F46E5;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-    .contact-block a:hover { text-decoration: underline; }
-    .divider {
-      border: none;
-      border-top: 1px solid #e2e8f0;
-      margin: 8px 0 16px;
-    }
-    .privacy-link {
-      font-size: 0.9rem;
-      color: #64748b;
-    }
-    .privacy-link a {
-      color: #06B6D4;
-      text-decoration: none;
-    }
-    .privacy-link a:hover { text-decoration: underline; }
-    footer {
-      text-align: center;
-      padding: 24px;
-      border-top: 1px solid #e2e8f0;
-      font-size: 0.85rem;
-      color: #94a3b8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerostaff - Automatiza la Atención al Cliente con IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -1px;
+        }
+
+        .contact-header {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            transition: border-color 0.3s;
+        }
+
+        .contact-header a:hover {
+            border-bottom-color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(79, 70, 229, 0.05) 0%, transparent 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 48px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Channels Section */
+        .channels {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1f2937;
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .channel-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .channel-card:hover {
+            border-color: #4F46E5;
+            box-shadow: 0 12px 32px rgba(79, 70, 229, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .channel-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .channel-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+
+        .channel-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+            padding: 80px 0;
+            border-radius: 16px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid #4F46E5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 32px;
+            color: #1f2937;
+        }
+
+        .contact-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
+            color: white;
+            padding: 20px 56px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 24px;
+        }
+
+        .contact-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(79, 70, 229, 0.35);
+        }
+
+        .contact p {
+            font-size: 16px;
+            color: #6b7280;
+            margin-top: 16px;
+        }
+
+        .contact a {
+            color: #4F46E5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact a:hover {
+            color: #06B6D4;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 40px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            margin-right: 24px;
+        }
+
+        .footer-links a:hover {
+            color: #06B6D4;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-top: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .channels-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .contact-header {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .cta-button {
+                padding: 14px 32px;
+                font-size: 14px;
+            }
+
+            .contact-cta {
+                padding: 16px 40px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Cerostaff</h1>
-    <p class="tagline">Agentes virtuales IA para tu negocio</p>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">CEROSTAFF</div>
+                <div class="contact-header">
+                    <a href="mailto:edson.romero@cerostaff.com">edson.romero@cerostaff.com</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <main>
-    <span class="badge">Sitio en construcción</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Automatiza la atención al cliente de tu negocio con IA</h1>
+            <p>Agentes virtuales inteligentes para WhatsApp, Instagram, Telegram y Facebook Messenger. Disponible 24/7 para responder, agendar citas, enviar cotizaciones y escalar a un humano cuando sea necesario.</p>
+            <a href="mailto:edson.romero@cerostaff.com" class="cta-button">Solicita una demostración</a>
+        </div>
+    </section>
 
-    <p class="description">
-      Próximamente en <strong>cerostaff.com</strong> — la plataforma de agentes virtuales de inteligencia
-      artificial para PyMEs colombianas que atienden clientes por WhatsApp, Instagram y más canales.
-    </p>
+    <!-- Channels Section -->
+    <section class="channels">
+        <div class="container">
+            <h2 class="section-title">Canales disponibles</h2>
+            <div class="channels-grid">
+                <div class="channel-card">
+                    <span class="channel-icon">💬</span>
+                    <h3>WhatsApp</h3>
+                    <p>Conecta directamente con tus clientes en el canal más usado en Colombia.</p>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">📸</span>
+                    <h3>Instagram</h3>
+                    <p>Responde mensajes directos de forma automática y profesional.</p>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">✈️</span>
+                    <h3>Telegram</h3>
+                    <p>Automatiza conversaciones con tus contactos en Telegram.</p>
+                </div>
+                <div class="channel-card">
+                    <span class="channel-icon">👥</span>
+                    <h3>Facebook Messenger</h3>
+                    <p>Gestiona mensajes de Facebook e Instagram desde un solo lugar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="contact-block">
-      <p>¿Quieres saber más? Escríbenos:</p>
-      <a href="mailto:edson.romero@cerostaff.com">edson.romero@cerostaff.com</a>
-      <hr class="divider">
-      <p class="privacy-link">
-        <a href="privacy-policy.html">Política de Privacidad y Tratamiento de Datos</a>
-      </p>
-    </div>
-  </main>
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Por qué elegir Cerostaff</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>⏰ Atención 24/7</h3>
+                    <p>Tu agente virtual trabaja sin descanso, respondiendo clientes en cualquier hora del día o la noche, sin costo adicional.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>⚡ Respuestas instantáneas</h3>
+                    <p>Los clientes reciben respuestas inmediatas, mejorando su satisfacción y aumentando tus posibilidades de conversión.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>👤 Escalamiento a humano</h3>
+                    <p>Cuando sea necesario, el agente escala automáticamente a tu equipo para casos complejos o particulares.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>© 2026 Cerostaff SAS — Mosquera, Cundinamarca, Colombia</p>
-    <p>Última actualización: marzo 2026</p>
-  </footer>
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>¿Listo para automatizar tu atención al cliente?</h2>
+            <a href="mailto:edson.romero@cerostaff.com" class="contact-cta">Contacta con nosotros</a>
+            <p>Escribe a <a href="mailto:edson.romero@cerostaff.com">edson.romero@cerostaff.com</a> para conocer más sobre nuestros planes y primeros pasos.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="/privacy-policy.html">Política de privacidad</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2026 Cerostaff SAS. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
