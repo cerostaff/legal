@@ -1,431 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cerostaff - Automatiza la Atención al Cliente con IA</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1f2937;
-            background-color: #ffffff;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-            padding: 24px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 900;
-            color: white;
-            letter-spacing: -1px;
-        }
-
-        .contact-header {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .contact-header a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-            transition: border-color 0.3s;
-        }
-
-        .contact-header a:hover {
-            border-bottom-color: white;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(79, 70, 229, 0.05) 0%, transparent 100%);
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #6b7280;
-            margin-bottom: 48px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-            color: white;
-            padding: 16px 48px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(79, 70, 229, 0.3);
-        }
-
-        /* Channels Section */
-        .channels {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 36px;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #1f2937;
-        }
-
-        .channels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 32px;
-            margin-bottom: 80px;
-        }
-
-        .channel-card {
-            background: #ffffff;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .channel-card:hover {
-            border-color: #4F46E5;
-            box-shadow: 0 12px 32px rgba(79, 70, 229, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .channel-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .channel-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1f2937;
-        }
-
-        .channel-card p {
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.5;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
-            padding: 80px 0;
-            border-radius: 16px;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            border-left: 4px solid #4F46E5;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .benefit-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1f2937;
-        }
-
-        .benefit-card p {
-            font-size: 14px;
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 32px;
-            color: #1f2937;
-        }
-
-        .contact-cta {
-            display: inline-block;
-            background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%);
-            color: white;
-            padding: 20px 56px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-bottom: 24px;
-        }
-
-        .contact-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 32px rgba(79, 70, 229, 0.35);
-        }
-
-        .contact p {
-            font-size: 16px;
-            color: #6b7280;
-            margin-top: 16px;
-        }
-
-        .contact a {
-            color: #4F46E5;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact a:hover {
-            color: #06B6D4;
-        }
-
-        /* Footer */
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 40px 0;
-            margin-top: 80px;
-            text-align: center;
-        }
-
-        .footer-content {
-            margin-bottom: 16px;
-        }
-
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-            margin-right: 24px;
-        }
-
-        .footer-links a:hover {
-            color: #06B6D4;
-        }
-
-        .footer-copyright {
-            font-size: 14px;
-            color: #9ca3af;
-            margin-top: 16px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .channels-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .contact-header {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 60px 0;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-                margin-bottom: 16px;
-            }
-
-            .cta-button {
-                padding: 14px 32px;
-                font-size: 14px;
-            }
-
-            .contact-cta {
-                padding: 16px 40px;
-                font-size: 16px;
-            }
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cerostaff — Automatiza los flujos de trabajo de tu negocio</title>
+<meta name="description" content="Cerostaff automatiza la atención y los procesos de tu negocio en WhatsApp, Instagram, Telegram y Facebook. Gestiona, organiza, vende y responde 24/7 sin contratar a nadie."/>
+<link rel="icon" type="image/png" href="assets/logo-icon.png"/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">CEROSTAFF</div>
-                <div class="contact-header">
-                    <a href="mailto:edson.romero@cerostaff.com">edson.romero@cerostaff.com</a>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Automatiza la atención al cliente de tu negocio con IA</h1>
-            <p>Agentes virtuales inteligentes para WhatsApp, Instagram, Telegram y Facebook Messenger. Disponible 24/7 para responder, agendar citas, enviar cotizaciones y escalar a un humano cuando sea necesario.</p>
-            <a href="mailto:edson.romero@cerostaff.com" class="cta-button">Solicita una demostración</a>
-        </div>
-    </section>
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html" aria-label="Cerostaff — inicio">
+      <img src="assets/logo-color.png" alt="Cerostaff"/>
+    </a>
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="#canales">Canales</a>
+      <a href="#automatiza">Qué automatiza</a>
+      <a href="#red">Red de negocios</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-primary btn-sm" href="mailto:edson.romero@cerostaff.com?subject=Solicito%20una%20demostraci%C3%B3n%20de%20Cerostaff">Solicita una demostración</a>
+    </div>
+  </div>
+</header>
 
-    <!-- Channels Section -->
-    <section class="channels">
-        <div class="container">
-            <h2 class="section-title">Canales disponibles</h2>
-            <div class="channels-grid">
-                <div class="channel-card">
-                    <span class="channel-icon">💬</span>
-                    <h3>WhatsApp</h3>
-                    <p>Conecta directamente con tus clientes en el canal más usado en Colombia.</p>
-                </div>
-                <div class="channel-card">
-                    <span class="channel-icon">📸</span>
-                    <h3>Instagram</h3>
-                    <p>Responde mensajes directos de forma automática y profesional.</p>
-                </div>
-                <div class="channel-card">
-                    <span class="channel-icon">✈️</span>
-                    <h3>Telegram</h3>
-                    <p>Automatiza conversaciones con tus contactos en Telegram.</p>
-                </div>
-                <div class="channel-card">
-                    <span class="channel-icon">👥</span>
-                    <h3>Facebook Messenger</h3>
-                    <p>Gestiona mensajes de Facebook e Instagram desde un solo lugar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<main>
 
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <div class="container">
-            <h2 class="section-title">Por qué elegir Cerostaff</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <h3>⏰ Atención 24/7</h3>
-                    <p>Tu agente virtual trabaja sin descanso, respondiendo clientes en cualquier hora del día o la noche, sin costo adicional.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>⚡ Respuestas instantáneas</h3>
-                    <p>Los clientes reciben respuestas inmediatas, mejorando su satisfacción y aumentando tus posibilidades de conversión.</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>👤 Escalamiento a humano</h3>
-                    <p>Cuando sea necesario, el agente escala automáticamente a tu equipo para casos complejos o particulares.</p>
-                </div>
-            </div>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" data-screen-label="Hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-halo" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <p class="eyebrow">Automatización para tu negocio</p>
+        <h1>Automatiza los flujos de trabajo de <span class="accent">tu negocio</span></h1>
+        <p class="hero-sub">Gestiona, organiza, vende y responde 24/7 — sin contratar a nadie. Cerostaff automatiza la atención y los procesos de tu negocio en WhatsApp, Instagram, Telegram y Facebook.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="mailto:edson.romero@cerostaff.com?subject=Solicito%20una%20demostraci%C3%B3n%20de%20Cerostaff">Solicita una demostración</a>
+          <a class="btn btn-secondary" href="#automatiza">Ver qué automatiza
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
         </div>
-    </section>
+        <div class="hero-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Operación 24/7</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sin contratar personal</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cuatro canales en un solo lugar</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <h2>¿Listo para automatizar tu atención al cliente?</h2>
-            <a href="mailto:edson.romero@cerostaff.com" class="contact-cta">Contacta con nosotros</a>
-            <p>Escribe a <a href="mailto:edson.romero@cerostaff.com">edson.romero@cerostaff.com</a> para conocer más sobre nuestros planes y primeros pasos.</p>
+  <!-- ===================== CHANNELS ===================== -->
+  <section class="channels" id="canales" data-screen-label="Canales">
+    <div class="container">
+      <p class="channels-label">Tu negocio responde donde están tus clientes</p>
+      <div class="channels-row">
+        <div class="channel-tile">
+          <img src="assets/channels/whatsapp.png" alt="WhatsApp"/>
+          <span>WhatsApp</span>
         </div>
-    </section>
+        <div class="channel-tile">
+          <img src="assets/channels/instagram.png" alt="Instagram"/>
+          <span>Instagram</span>
+        </div>
+        <div class="channel-tile">
+          <svg viewBox="0 0 240 240" aria-hidden="true"><defs><linearGradient id="tg" x1="120" y1="0" x2="120" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#37BBFE"/><stop offset="1" stop-color="#007DBB"/></linearGradient></defs><circle cx="120" cy="120" r="120" fill="url(#tg)"/><path d="M81.2 127.4 175 80.6c4.3-1.7 8.1.9 6.5 7.8l-15.7 74.1c-1.3 6.1-5 7.6-10.1 4.7l-28-20.6-13.5 13c-1.5 1.5-2.7 2.7-5.6 2.7l2-28.6 52.1-47c2.3-2-.5-3.1-3.5-1.2l-64.4 40.5-27.8-8.7c-6-1.9-6.2-6 1.3-8.9Z" fill="#fff"/></svg>
+          <span>Telegram</span>
+        </div>
+        <div class="channel-tile">
+          <img src="assets/channels/messenger.png" alt="Facebook Messenger"/>
+          <span>Facebook Messenger</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="/privacy-policy.html">Política de privacidad</a>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                © 2026 Cerostaff SAS. Todos los derechos reservados.
-            </div>
+  <!-- ===================== WHAT IT AUTOMATES ===================== -->
+  <section class="section" id="automatiza" data-screen-label="Qué automatiza">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Qué automatiza</p>
+        <h2>Tu negocio atiende, organiza y vende solo</h2>
+        <p>Configura una vez y deja que tu operación funcione por ti. Cada conversación avanza sin que tengas que estar pendiente del teléfono.</p>
+      </div>
+      <div class="auto-grid">
+        <article class="auto-card">
+          <div class="auto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>Responde 24/7</h3>
+          <p>Tu negocio contesta cada mensaje al instante, de día o de noche, sin dejar a nadie esperando.</p>
+        </article>
+        <article class="auto-card">
+          <div class="auto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+          </div>
+          <h3>Agenda y organiza</h3>
+          <p>Tu negocio toma citas, ordena solicitudes y mantiene cada conversación en su lugar, lista para dar seguimiento.</p>
+        </article>
+        <article class="auto-card">
+          <div class="auto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L23 7H6"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+          </div>
+          <h3>Vende y cotiza</h3>
+          <p>Tu negocio resuelve dudas, arma cotizaciones y cierra ventas dentro de la misma conversación.</p>
+        </article>
+        <article class="auto-card">
+          <div class="auto-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6"/><path d="m19 8 3 3-3 3"/></svg>
+          </div>
+          <h3>Escala a una persona</h3>
+          <p>Cuando hace falta criterio humano, tu negocio pasa la conversación a una persona de tu equipo sin perder el hilo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NETWORK TEASER ===================== -->
+  <section class="section section-muted" id="red" data-screen-label="Red de negocios">
+    <div class="container">
+      <div class="network">
+        <div class="network-copy">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="m7 7 3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/></svg>
+            Próximamente
+          </span>
+          <h2>Red de negocios</h2>
+          <p>Conecta tu negocio con otros de la red Cerostaff y recibe clientes referidos cuando aparece una necesidad que otro negocio cubre. Conecta también con las estrategias de otros negocios de la red.</p>
         </div>
-    </footer>
+        <div class="network-visual" aria-hidden="true">
+          <div class="network-node center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
+            <img src="assets/logo-icon.png" alt="" style="width:32px;height:32px;"/>
+          </div>
+          <div class="network-node" style="left:12%;top:16%;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01"/></svg></div>
+          <div class="network-node" style="right:10%;top:14%;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.5-4.5a2 2 0 0 1 1.4-.5h8.2a2 2 0 0 1 1.4.5L22 7"/><path d="M4 7v13a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7"/><path d="M2 7h20M9 12h6"/></svg></div>
+          <div class="network-node" style="left:9%;bottom:14%;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></div>
+          <div class="network-node" style="right:11%;bottom:16%;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 3l9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 22V12h6v10"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="cta-banner-glow" aria-hidden="true"></div>
+        <h2>Pon a tu negocio a trabajar 24/7</h2>
+        <p>Te mostramos en una demostración cómo Cerostaff automatiza la atención y los procesos de tu negocio.</p>
+        <a class="btn btn-on-dark" href="mailto:edson.romero@cerostaff.com?subject=Solicito%20una%20demostraci%C3%B3n%20de%20Cerostaff">Solicita una demostración</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-color.png" alt="Cerostaff"/>
+        <p>Automatización de la atención y los procesos de tu negocio en WhatsApp, Instagram, Telegram y Facebook.</p>
+        <div class="footer-legal-id">
+          Cerostaff SAS · NIT 902055075<br/>
+          Mosquera, Cundinamarca, Colombia<br/>
+          <a href="mailto:edson.romero@cerostaff.com">edson.romero@cerostaff.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Producto</h4>
+        <a href="index.html#canales">Canales</a>
+        <a href="index.html#automatiza">Qué automatiza</a>
+        <a href="index.html#red">Red de negocios</a>
+        <a href="mailto:edson.romero@cerostaff.com?subject=Solicito%20una%20demostraci%C3%B3n%20de%20Cerostaff">Solicita una demostración</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">Política de privacidad</a>
+        <a href="terms-of-service.html">Términos y Condiciones</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Cerostaff SAS — Todos los derechos reservados</span>
+      <span>Mosquera, Cundinamarca, Colombia</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
