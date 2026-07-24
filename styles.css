@@ -120,11 +120,11 @@ img { max-width: 100%; display: block; }
 .legal-hero {
   position: relative; overflow: hidden; isolation: isolate;
   background: rgb(var(--paper)); border-bottom: 1px solid rgba(166,119,84,0.18);
-  padding: 76px 0 56px;
+  padding: 64px 0 48px;
 }
 .legal-hero h1 {
-  font-size: clamp(30px, 5vw, 46px); line-height: 1.08; letter-spacing: -0.03em; font-weight: 600;
-  color: rgb(var(--brand-ink)); margin: 0 0 14px; text-wrap: balance;
+  font-size: clamp(25px, 3.2vw, 33px); line-height: 1.14; letter-spacing: -0.022em; font-weight: 600;
+  color: rgb(var(--brand-ink)); margin: 0 0 12px; text-wrap: balance;
 }
 .legal-hero p { font-size: 17px; line-height: 1.55; color: rgb(var(--text-secondary)); margin: 0; max-width: 640px; }
 .legal-updated { display: inline-block; font-family: var(--font-mono); font-size: 12px; color: rgb(var(--text-subtle)); margin-top: 20px; }
